@@ -7,7 +7,7 @@ The primary objective of this lab was to engineer a complete, end-to-end detecti
 
 ---
 
-## 🛠️ Infrastructure & Topology
+## 🏗️ Infrastructure & Topology
 The entire infrastructure was virtualized inside **VMware Workstation Pro**, utilizing a custom internal NAT virtual network switch layout to isolate and manage routing.
 
 | Asset Name | Operating System | IP Address | Roles / Installed Applications |
@@ -16,8 +16,21 @@ The entire infrastructure was virtualized inside **VMware Workstation Pro**, uti
 | **project-1-win11** | Windows 11 Education (25H2) | `10.0.0.100` | Domain-joined Workstation (`DESKTOP-5IM5R1B`), Microsoft Sysmon, Wazuh Agent |
 | **project-1-sec-box**| Ubuntu Linux (Wazuh OVA v4.10) | `10.0.0.10` | Wazuh Indexer, Server Daemon, and Security Dashboard Portal |
 
----
+Below is the logical flow of the infrastructure network segment, routing boundaries, and telemetry ingestion pipelines:
 
+```mermaid
+flowchart TD
+    subgraph LabNet ["Virtual Network Segment - VMnet8 (10.0.0.0/24)"]
+        Gateway[VMware NAT Gateway - 10.0.0.2]
+        DC[project-1-dc: Windows Server DC - 10.0.0.5]
+        Wazuh[project-1-sec-box: Wazuh SIEM - 10.0.0.10]
+        WinWork[project-1-win11: Windows 11 Workstation - 10.0.0.100]
+    end
+
+    Gateway -->|Internet Access & DNS Forwarding| DC
+    DC -->|Local DNS Resolution & DHCP Leases| WinWork
+    WinWork -->|Microsoft Sysmon Telemetry & Agent Handshake| Wazuh
+```
 ## 🚀 Deployment Milestones & Engineering Challenges
 
 ### 1. Active Directory & Core Network Architecture
