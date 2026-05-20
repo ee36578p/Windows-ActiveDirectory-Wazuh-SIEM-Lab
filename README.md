@@ -42,21 +42,21 @@ The entire infrastructure was virtualized inside **VMware Workstation Pro**, uti
 ### Core Network Infrastructure
 *Statically assigning the enterprise gateway boundaries on the Domain Controller to anchor local infrastructure routing:*
 
-![Network Configuration](https://github.com/user-attachments/assets/afdbcc2a-2f41-469d-bf08-ce24d1769e32)
+![Network Configuration](network-configuration.jpg)
 
 *The successfully authorized domain infrastructure, showing green checkmarks indicating full Active Directory integration:*
 
-![DHCP Authorized Domain Infrastructure](https://github.com/user-attachments/assets/2c1b4638-e0c1-469d-bf08-ce24d1769e32)
+![DHCP Authorized Domain Infrastructure](dhcp-authorized.jpg)
 
 ### Active SIEM Agent Synchronization
 *The exact moment the Windows 11 workstation (`DESKTOP-5IM5R1B`) successfully registered and completed its handshake with the SIEM manager:*
 
-![Wazuh Active Agent Summary Dashboard](https://github.com/user-attachments/assets/c7d087be-3008-4a5b-b2bb-ffa93b878399)
+![Wazuh Active Agent Summary Dashboard](azuh-agent-active.jpg)
 
 ### High-Volume Log Telemetry Stream
 *Proof of ingestion: Within minutes of activating the endpoint agent, hundreds of enriched Sysmon log payloads were successfully captured, categorized, and made available for live parsing inside the SIEM dashboard:*
 
-![Wazuh SIEM Ingestion Event Timeline Stream](https://github.com/user-attachments/assets/f67b7be9-b7b0-4093-851c-2c459b3ed682)
+![Wazuh SIEM Ingestion Event Timeline Stream](wazuh-discover-logs.jpg)
 
 ---
 
